@@ -1,180 +1,190 @@
-categories = ["Strength", "Speed", "Durability", "Agility", "Intelligence", "Battle_Iq", "Experience", "Endurance", "Stamina", "Attack_Potency",
-              "Knowledge", "Reaction_Speed", "Combat_Speed", "Skill", "Combat", "Versatility", "Scaling","Feats"]
+import random
+
+categories = ["Strength", "Speed", "Durability", "Agility", "Intelligence", "Battle Iq", "Experience", "Endurance", "Stamina", "Attack Potency",
+              "Knowledge", "Reaction Speed", "Combat Speed", "Skill", "Combat", "Versatility", "Scaling", "Feats"]
 
 Iron_Man = {
-    "Strength": 7,
+    "Strength": 8,
     "Speed": 8,
     "Durability": 8,
     "Agility": 6,
     "Intelligence": 10,
-    "Battle_Iq": 7,
+    "Battle Iq": 7,
     "Experience": 7,
     "Endurance": 8,
     "Stamina": 6,
-    "Attack_Potency": 7,
+    "Attack Potency": 7,
     "Knowledge": 9,
-    "Reaction_Speed": 6,
-    "Combat_Speed": 6,
+    "Reaction Speed": 6,
+    "Combat Speed": 6,
     "Skill": 8,
     "Combat": 6,
     "Versatility": 8,
     "Scaling": 6,
     "Feats": 8,
     "Name": "Iron Man",
+    "Points": 0
 }
 
 Spiderman = {
     "Strength": 7,
     "Speed": 6,
-    "Durability": 7,
+    "Durability": 6,
     "Agility": 10,
     "Intelligence": 8,
-    "Battle_Iq": 6,
+    "Battle Iq": 6,
     "Experience": 5,
     "Endurance": 7,
     "Stamina": 6,
-    "Attack_Potency": 7,
+    "Attack Potency": 7,
     "Knowledge": 8,
-    "Reaction_Speed": 10,
-    "Combat_Speed": 10,
+    "Reaction Speed": 10,
+    "Combat Speed": 10,
     "Skill": 7,
     "Combat": 6,
     "Versatility": 7,
     "Scaling": 5,
     "Feats": 6,
     "Name": "Spiderman",
+    "Points": 0
 }
 
 Hulk = {
-    "Strength": 8,
+    "Strength": 9,
     "Speed": 6,
     "Durability": 9,
     "Agility": 5,
     "Intelligence": 2,
-    "Battle_Iq": 2,
+    "Battle Iq": 2,
     "Experience": 5,
     "Endurance": 9,
     "Stamina": 8,
-    "Attack_Potency": 8,
+    "Attack Potency": 8,
     "Knowledge": 1,
-    "Reaction_Speed": 5,
-    "Combat_Speed": 8,
+    "Reaction Speed": 5,
+    "Combat Speed": 8,
     "Skill": 5,
     "Combat": 6,
     "Versatility": 4,
     "Scaling": 7,
     "Feats": 5,
-    "Name": "Hulk"
+    "Name": "Hulk",
+    "Points": 0
 }
 
 Thor = {
-    "Strength": 9,
+    "Strength": 10,
     "Speed": 8,
     "Durability": 10,
     "Agility": 6,
     "Intelligence": 6,
-    "Battle_Iq": 10,
+    "Battle Iq": 10,
     "Experience": 10,
     "Endurance": 10,
     "Stamina": 10,
-    "Attack_Potency": 10,
+    "Attack Potency": 10,
     "Knowledge": 7,
-    "Reaction_Speed": 7,
-    "Combat_Speed": 6,
+    "Reaction Speed": 7,
+    "Combat Speed": 6,
     "Skill": 9,
     "Combat": 10,
     "Versatility": 7,
     "Scaling": 10,
     "Feats": 9,
-    "Name": "Thor"
+    "Name": "Thor",
+    "Points": 0
 }
 
 Captain_Marvel = {
-    "Strength": 9,
+    "Strength": 10,
     "Speed": 9,
     "Durability": 10,
     "Agility": 8,
     "Intelligence": 5,
-    "Battle_Iq": 8,
+    "Battle Iq": 8,
     "Experience": 8,
     "Endurance": 9,
     "Stamina": 8,
-    "Attack_Potency": 9,
+    "Attack Potency": 9,
     "Knowledge": 6,
-    "Reaction_Speed": 8,
-    "Combat_Speed": 7,
+    "Reaction Speed": 8,
+    "Combat Speed": 7,
     "Skill": 8,
     "Combat": 9,
     "Versatility": 6,
     "Scaling": 9,
     "Feats": 8,
-    "Name": "Captain Marvel"
+    "Name": "Captain Marvel",
+    "Points": 0
 }
 
 Doctor_Strange = {
     "Strength": 6,
-    "Speed": 8,
+    "Speed": 7,
     "Durability": 6,
     "Agility": 6,
     "Intelligence": 9,
-    "Battle_Iq": 9,
+    "Battle Iq": 9,
     "Experience": 7,
     "Endurance": 6,
     "Stamina": 6,
-    "Attack_Potency": 10,
+    "Attack Potency": 10,
     "Knowledge": 9,
-    "Reaction_Speed": 8,
-    "Combat_Speed": 7,
+    "Reaction Speed": 8,
+    "Combat Speed": 7,
     "Skill": 10,
     "Combat": 6,
     "Versatility": 9,
     "Scaling": 9,
     "Feats": 8,
-    "Name": "Doctor Strange"
+    "Name": "Doctor Strange",
+    "Points": 0
 }
 
 Scarlet_Witch = {
-    "Strength": 7,
-    "Speed": 8,
+    "Strength": 6,
+    "Speed": 7,
     "Durability": 7,
     "Agility": 7,
     "Intelligence": 5,
-    "Battle_Iq": 6,
-    "Experience": 7,
+    "Battle Iq": 6,
+    "Experience": 6,
     "Endurance": 7,
     "Stamina": 6,
-    "Attack_Potency": 10,
+    "Attack Potency": 10,
     "Knowledge": 10,
-    "Reaction_Speed": 8,
-    "Combat_Speed": 6,
+    "Reaction Speed": 8,
+    "Combat Speed": 6,
     "Skill": 7,
-    "Combat": 6,
+    "Combat": 5,
     "Versatility": 9,
     "Scaling": 9,
     "Feats": 8,
-    "Name": "Scarlet Witch"
+    "Name": "Scarlet Witch",
+    "Points": 0
 }
 
 Thanos = {
-    "Strength": 9,
+    "Strength": 10,
     "Speed": 6,
     "Durability": 10,
     "Agility": 5,
     "Intelligence": 9,
-    "Battle_Iq": 9,
+    "Battle Iq": 9,
     "Experience": 10,
     "Endurance": 10,
     "Stamina": 9,
-    "Attack_Potency": 10,
+    "Attack Potency": 10,
     "Knowledge": 9,
-    "Reaction_Speed": 9,
-    "Combat_Speed": 6,
+    "Reaction Speed": 9,
+    "Combat Speed": 6,
     "Skill": 10,
     "Combat": 9,
     "Versatility": 9,
     "Scaling": 10,
     "Feats": 10,
-    "Name": "Thanos"
+    "Name": "Thanos",
+    "Points": 0
 }
 
 characters = [Iron_Man, Spiderman, Hulk, Thor, Captain_Marvel, Doctor_Strange, Scarlet_Witch, Thanos]
@@ -193,7 +203,7 @@ def main():
     print(" 7 - Scarlet Witch")
     print(" 8 - Thanos")
     print()
-    game_mode = input("Your available game modes are: 1v1 (1), Battle Royale (2), Make Own Character (3). Which one would you like? ")
+    game_mode = input("Your available game modes are: 1v1 (1) and Battle Royale (2). Which one would you like? ")
     print()
 
     winner = pair_players(game_mode)
@@ -251,20 +261,73 @@ def pair_players(game_mode):
             
             break
 
+        elif game_mode.lower() == "battle royale" or game_mode == "2":    
+            while True:
+                try:
+                    num_characters = int(input("Please enter the amount of characters you would like to fight: "))
+                    print()
+                    break
+                except ValueError:
+                    print("Please enter an integer value.")
+                    print()
 
-        elif game_mode.lower() == "Battle Royale" or game_mode == "2":    
-            for character in characters:
-                pass
-                # if i["Strength"] == 1:
+            selected_characters = []
+            for selected_character in range(num_characters):
+                while True:
+                    try:
+                        selected_character = int(input("Who is the character you would like to select? Note: Enter the number of the character (ex. Thanos = 8) ")) - 1
+                        selected_characters.append(characters[selected_character])
+                        print()
+                        break
+                    except ValueError:
+                        print("Please enter an integer representing the character you would like to select. ")
+                        print()                
+
+            print()
+            print("Fighters: ")
+            for character in selected_characters:
+                print(character["Name"] + ", ", end = "")
+            print()
+            print()
+
+            for category in categories:
+                point = find_point(category, selected_characters)
+                print(category, ":", point)
+                print()
+
+            winner_count = 0
+            winner = None
+            for character in selected_characters:
+                if character["Points"] > winner_count:
+                    winner_count = character["Points"]
+                    winner = character["Name"]
+                    character["Points"] += 1
+                elif character["Points"] == winner_count:
+                    winner = winner + " and " + character["Name"]
+                    character["Points"] += 1
+            
+            return(winner)
+
             break
-
-        elif game_mode.lower() == "Make Own Character" or game_mode == "3":
-            break
-
+        
         else:
             print("Your inputted game mode is not one of the avaliable options. Please choose again. ")
+            print()
             game_mode = input("Your available game modes are: 1v1 (1), Battle Royale (2), Make Own Character (3). Which one would you like? ")
 
+
+def find_point(category, selected_characters):
+    max_num = 0
+    current = None
+    for character in selected_characters:
+        if character[category] > max_num:
+            max_num = character[category]
+            current = character["Name"]
+            character["Points"] += 1
+        elif character[category] == max_num:
+            current = current + " and " + character["Name"]
+            character["Points"] += 1
+    return current
 
 if __name__ == "__main__":
     main()
