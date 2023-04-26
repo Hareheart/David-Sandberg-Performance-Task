@@ -206,6 +206,7 @@ def main():
     game_mode = input("Your available game modes are: 1v1 (1) and Battle Royale (2). Which one would you like? ")
     print()
 
+    # the winner is returned regardless of the gamemode and printed to the screen
     winner = pair_players(game_mode)
     print("Winner: " + winner)
     print()
@@ -214,6 +215,7 @@ def main():
 def pair_players(game_mode):
     while True:
         if game_mode.lower() == "1v1" or game_mode == "1":
+            # only accepts integer that corresponds to character, otherwise, warning and question is given
             while True:
                 try:
                     selected_character1 = int(input("Who is the first character you would like to select? Note: Enter the number of the character (ex. Thanos = 8) ")) - 1
@@ -273,6 +275,7 @@ def pair_players(game_mode):
 
             selected_characters = []
             for selected_character in range(num_characters):
+                # only accepts integer that corresponds to character, otherwise, warning and question is given
                 while True:
                     try:
                         selected_character = int(input("Who is the character you would like to select? Note: Enter the number of the character (ex. Thanos = 8) ")) - 1
@@ -290,6 +293,7 @@ def pair_players(game_mode):
             print()
             print()
 
+            # For each category, function is called to determine who gets the points
             for category in categories:
                 point = find_point(category, selected_characters)
                 print(category, ":", point)
