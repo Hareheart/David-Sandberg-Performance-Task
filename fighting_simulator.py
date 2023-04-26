@@ -192,7 +192,7 @@ characters = [Iron_Man, Spiderman, Hulk, Thor, Captain_Marvel, Doctor_Strange, S
 
 def main():
     print()
-    print("Welcome to the Arena! You will have the chance to pair two MCU characters together in a hypothetical fight and see who ")
+    print("Welcome to the Arena! You will have the chance to pair MCU characters together in a hypothetical fight and see who ")
     print("would win depending on a list of 18 different categories determining power level. Your choices include: ")
     print(" 1 - Iron Man")
     print(" 2 - Spiderman")
