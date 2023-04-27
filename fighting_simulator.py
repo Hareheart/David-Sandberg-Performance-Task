@@ -305,10 +305,8 @@ def pair_players(game_mode):
                 if character["Points"] > winner_count:
                     winner_count = character["Points"]
                     winner = character["Name"]
-                    character["Points"] += 1
                 elif character["Points"] == winner_count:
                     winner = winner + " and " + character["Name"]
-                    character["Points"] += 1
             
             return(winner)
 
@@ -317,7 +315,7 @@ def pair_players(game_mode):
         else:
             print("Your inputted game mode is not one of the avaliable options. Please choose again. ")
             print()
-            game_mode = input("Your available game modes are: 1v1 (1), Battle Royale (2), Make Own Character (3). Which one would you like? ")
+            game_mode = input("Your available game modes are: 1v1 (1) and Battle Royale (2). Which one would you like? ")
 
 
 def find_point(category, selected_characters):
