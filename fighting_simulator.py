@@ -215,76 +215,19 @@ def main():
 def pair_players(game_mode):
     while True:
         if game_mode.lower() == "1v1" or game_mode == "1":
-            # only accepts integer that corresponds to character, otherwise, warning and question is given
-            while True:
-                try:
-                    selected_character1 = int(input("Who is the first character you would like to select? Note: Enter the number of the character (ex. Thanos = 8) ")) - 1
-                    selected_character2 = int(input("Who is the second character you would like to select? Note: Enter the number of the character (ex. Thanos = 8) ")) - 1
-                    break
-                except ValueError:
-                    print("Please enter an integer representing the character you would like to select. ")
+            selected_character1 = select_character1()
+            print()
+            selected_character2 = select_character2(selected_character1)
 
             character1 = characters[selected_character1]
             character2 = characters[selected_character2]
 
-            character1_counter = 0
-            character2_counter = 0
+            winner = calculate_winner(character1, character2)
+            return(winner)
 
-            print()
-            print("Fight: ", character1["Name"], " VS ", character2["Name"])
-            print()
-
-            for category in categories:
-                if character1[category] > character2[category]:
-                    character1_counter += 1
-                    print(category, ":", character1["Name"])
-                    print("Score:", character1_counter, ",", character2_counter)
-                    print()
-
-                elif character1[category] < character2[category]:
-                    character2_counter += 1
-                    print(category, ":", character2["Name"])
-                    print("Score:", character1_counter, ",", character2_counter)
-                    print()
-
-                elif character1[category] == character2[category]:
-                    character1_counter += 1
-                    character2_counter += 1
-                    print(category, ": ", "Both")
-                    print("Score: ", character1_counter, ", ", character2_counter)
-                    print()
-            
-            if character1_counter > character2_counter:
-                return(character1["Name"])
-            elif character1_counter < character2_counter:
-                return(character2["Name"])
-            elif character1_counter == character2_counter:
-                return("Draw")
-            
-            break
-
-        elif game_mode.lower() == "battle royale" or game_mode == "2":    
-            while True:
-                try:
-                    num_characters = int(input("Please enter the amount of characters you would like to fight: "))
-                    print()
-                    break
-                except ValueError:
-                    print("Please enter an integer value.")
-                    print()
-
-            selected_characters = []
-            for selected_character in range(num_characters):
-                # only accepts integer that corresponds to character, otherwise, warning and question is given
-                while True:
-                    try:
-                        selected_character = int(input("Who is the character you would like to select? Note: Enter the number of the character (ex. Thanos = 8) ")) - 1
-                        selected_characters.append(characters[selected_character])
-                        print()
-                        break
-                    except ValueError:
-                        print("Please enter an integer representing the character you would like to select. ")
-                        print()                
+        elif game_mode.lower() == "battle royale" or game_mode == "2":
+            num_characters = select_num_characters()
+            selected_characters = select_characters(num_characters)
 
             print()
             print("Fighters: ")
@@ -299,24 +242,137 @@ def pair_players(game_mode):
                 print(category, ":", point)
                 print()
 
-            winner_count = 0
-            winner = None
-            for character in selected_characters:
-                if character["Points"] > winner_count:
-                    winner_count = character["Points"]
-                    winner = character["Name"]
-                elif character["Points"] == winner_count:
-                    winner = winner + " and " + character["Name"]
-            
-            return(winner)
-
-            break
+            winner = calculate_winner2(selected_characters)
+            return winner
         
         else:
             print("Your inputted game mode is not one of the avaliable options. Please choose again. ")
             print()
             game_mode = input("Your available game modes are: 1v1 (1) and Battle Royale (2). Which one would you like? ")
 
+
+def select_character1():
+    while True:
+        while True:
+            try:
+                selected_character1 = int(input("Who is the first character you would like to select? Note: Enter the number of the character (ex. Thanos = 8) ")) - 1
+                if selected_character1 >= 0 and selected_character1 <= 7:
+                    break
+                else:
+                    print("Selected integer does not represent one of the characters. Please choose again: ")
+            except ValueError:
+                print("Please enter an integer representing the character you would like to select. ")
+
+        if selected_character1 > 7 or selected_character1 < 0:
+            while True:
+                try:
+                    selected_character1 = int(input("Selected integer does not represent one of the characters. Please choose again: ")) - 1
+                    if selected_character1 >= 0 and selected_character1 <= 7:
+                        break
+                    else:
+                        print("Selected integer does not represent one of the characters. Please choose again: ")
+                except ValueError:
+                    print("Please enter an integer representing the character you would like to select. ")
+        else:
+            break
+
+    return selected_character1
+
+def select_character2(selected_character1):
+    while True:
+        while True:
+            try:
+                selected_character2 = int(input("Who is the second character you would like to select? Note: Enter the number of the character (ex. Thanos = 8) ")) - 1
+                if selected_character2 >= 0 and selected_character2 <= 7 and selected_character2 != selected_character1:
+                    break
+                else:
+                    print("Selected integer does not represent one of the characters, or character has already been picked. Please choose again: ")
+            except ValueError:
+                print("Please enter an integer representing the character you would like to select. ")
+
+        if selected_character2 > 7 or selected_character2 < 0:
+            while True:
+                try:
+                    selected_character2 = int(input("Selected integer does not represent one of the characters. Please choose again: ")) - 1
+                    if selected_character2 >= 0 and selected_character2 <= 7:
+                        break
+                    else:
+                        print("Selected integer does not represent one of the characters. Please choose again: ")
+                except ValueError:
+                    print("Please enter an integer representing the character you would like to select. ")
+        else:
+            break
+
+    return selected_character2
+
+def calculate_winner(character1, character2):
+    character1_counter = 0
+    character2_counter = 0
+
+    print()
+    print("Fight: ", character1["Name"], " VS ", character2["Name"])
+    print()
+
+    for category in categories:
+        if character1[category] > character2[category]:
+            character1_counter += 1
+            print(category, ":", character1["Name"])
+            print("Score:", character1_counter, ",", character2_counter)
+            print()
+
+        elif character1[category] < character2[category]:
+            character2_counter += 1
+            print(category, ":", character2["Name"])
+            print("Score:", character1_counter, ",", character2_counter)
+            print()
+
+        elif character1[category] == character2[category]:
+            character1_counter += 1
+            character2_counter += 1
+            print(category, ": ", "Both")
+            print("Score: ", character1_counter, ", ", character2_counter)
+            print()
+    
+    if character1_counter > character2_counter:
+        return(character1["Name"])
+    elif character1_counter < character2_counter:
+        return(character2["Name"])
+    elif character1_counter == character2_counter:
+        return("Draw")
+
+
+def select_num_characters():
+    while True:
+        try:
+            num_characters = int(input("Please enter the amount of characters you would like to fight: "))
+            if num_characters >= 2:
+                print()
+                break
+            else:
+                print("Number of characters must be more than 1. ")
+                print()
+        except ValueError:
+            print("Please enter an integer value.")
+            print()
+    return num_characters
+
+def select_characters(num_characters):
+    selected_characters = []
+    for i in range(num_characters):
+        while True:
+            try:
+                selected_character = int(input(f"Who is character {i+1} that you would like to select? Note: Enter the number of the character (ex. Thanos = 8) ")) - 1
+                if selected_character >= 0 and selected_character <= 7 and characters[selected_character] not in selected_characters:
+                    selected_characters.append(characters[selected_character])
+                    break
+                else:
+                    print("Selected integer does not represent one of the characters, or character has already been chosen. Please choose again: ")
+                
+            except ValueError:
+                print("Please enter an integer representing the character you would like to select. ")
+        print()
+
+    return selected_characters
 
 def find_point(category, selected_characters):
     max_num = 0
@@ -330,6 +386,19 @@ def find_point(category, selected_characters):
             current = current + " and " + character["Name"]
             character["Points"] += 1
     return current
+
+def calculate_winner2(selected_characters):
+    winner_count = 0
+    winner = None
+    for character in selected_characters:
+        if character["Points"] > winner_count:
+            winner_count = character["Points"]
+            winner = character["Name"]
+        elif character["Points"] == winner_count:
+            winner = winner + " and " + character["Name"]
+    
+    return winner
+
 
 if __name__ == "__main__":
     main()
